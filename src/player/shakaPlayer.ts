@@ -138,6 +138,10 @@ export class TvPlayer implements AssSink {
         'overflow_menu',
         'fullscreen',
       ],
+      // Menus name tracks by language; mark the machine-translated one so it is not taken for
+      // official Korean subtitles.
+      customTrackLabel: (_label: string | null, track: { label: string | null }, type: string) =>
+        type === 'text' && track.label === KOREAN_TRACK_NAME ? KOREAN_TRACK_NAME : '',
       "enableTooltips": true,
       "enableKeyboardPlaybackControls": false,
       "singleClickForPlayAndPause": false,
